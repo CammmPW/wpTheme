@@ -8,15 +8,17 @@
        <?php
             if( have_posts() ) : while ( have_posts() ) : the_post();
                 get_template_part( 'content', get_post_format() );
-            endwhile; endif;
-        ?>
-
-          <nav>
+            endwhile;
+            ?>
+            <nav>
             <ul class="pager">
-              <li><a href="#">Previous</a></li>
-              <li><a href="#">Next</a></li>
+        <li><?php next_posts_link( 'Previous' ); ?></li>
+		<li><?php previous_posts_link( 'Next' ); ?></li>
             </ul>
           </nav>
+        <?php
+            endif;
+        ?>
 
         </div><!-- /.blog-main -->
 

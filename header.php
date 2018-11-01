@@ -25,7 +25,7 @@
     <![endif]-->
     <?php wp_head(); ?>
   </head>
-©
+
   <body>
 
     <div class="blog-masthead">

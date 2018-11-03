@@ -6,10 +6,18 @@ function wpTheme1_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'wpTheme1_scripts');
 
+
 function wpTheme1_google_fonts() {
     wp_register_style('OpenSans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
     wp_enqueue_style( 'OpenSans' );
 }
 add_action( 'wp_print_styles', 'wpTheme1_google_fonts');
 
+
 add_theme_support( 'title-tag' );
+
+
+function custom_settings_add_menu() {
+    add_menu_page( 'Custom Settings', 'Custom Settings', 'manage_options', 'custom-settings', 'custom_settings_page', null, 99 );
+}
+add_action('admin_menu', 'custom_settings_add_menu');

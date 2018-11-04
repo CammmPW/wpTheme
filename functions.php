@@ -62,21 +62,28 @@ add_action('admin_init', 'custom_settings_page_setup');
 add_theme_support('post-thumbnails');
 
 // Custom Post Type
-function create_my_custom_post() {
-    register_post_type( 'my-custom-post',
+function create_post_your_post() {
+    register_post_type('your post',
         array(
-        'labels' => array(
-            'name' => __( 'My Custom Post' ),
-            'singular_post' => __( 'My Custom Post' ),
+            'labels' => array(
+                'name' => __('Your Post'),
             ),
             'public' => true,
+            'hierarchial' => true,
             'has_archive' => true,
             'supports' => array(
                 'title',
                 'editor',
+                'excerpt',
                 'thumbnail',
-                'custom-fields',
+            ),
+            'taxonomies' => array(
+            'post_tag',
+            'category',
             )
-        ));
+        )
+    );
+    register_taxonomy_for_object_type('category', 'your_post');
+    register_taxonomy_for_object_type('post_tag', 'your_post');
 }
-add_action('init', 'create_my_custom_post');
+add_action('init', 'create_post_your_post');

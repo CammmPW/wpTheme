@@ -5,18 +5,17 @@
 
 			<?php
                 $args = array(
-                'post_type' => 'my-custom-post',
-                'orderby' => 'menu_order',
-                'order' => 'ASC'
+                'post_type' => 'your_post',
                 );
 
-				$custom_query = new WP_Query($args);
-                while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
+				$your_loop = new WP_Query($args);
+                if ($your_loop->have_posts()) : while ($your_loop->have_posts() ) : $your_loop->the_post();
+                $meta = get_post_meta($post->ID, 'your_fields', true); ?>
                 <div class="blog-post">
 					<h2 class="blog-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<?php the_excerpt(); ?>
 				</div> <?php
-                endwhile;
+                endwhile; endif; wp_reset_postdata();
 			?>
 
 		</div> <!-- /.col -->
